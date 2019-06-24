@@ -9,13 +9,13 @@ The workshop will switch between lecture and lab several times as new concepts a
 
 ## Prerequisite Installation
 
-The first problem every software development team encounters is how to get developers productive quickly and keep them productive by giving them a consistent development environment that is easy to setup and maintain. For this will we use **VirtualBox** and **Vagrant** to provide an _Infrastructure as Code_ environment on the developers desktop. If you don't have this software installed on your development computer, the first step is down download and install it.
+The first problem every software development team encounters is how to get developers productive quickly and keep them productive by giving them a consistent development environment that is easy to setup and maintain. Some developers might have Mac laptops while others prefer Windows, and still others prefer Linux; but these environments are very different and do not behave the same. To solve this problem, will we use **VirtualBox** and **Vagrant** to provide an _Infrastructure as Code_ environment on the developers desktop. If you don't have this software installed on your development computer, the first step is down download and install it.
 
 ### Mac installation
 
-**Homebrew* is the preferred method of installing tools on the Mac. First because it is quick and easy, and second because maintaining the latest version is done for you by a simple `brew upgrade` command:
+**Homebrew** is my preferred method of installing tools on the Mac. First because it is quick and easy, and second because maintaining the latest version is done for you with a simple `brew upgrade` command. If you are tired of downloading software and keeping it up to date, you want to use `brew` instead:
 
-Install **Homebrew* if you don't have it already:
+Install **Homebrew** if you don't have it already:
 
 ```sh
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -38,11 +38,11 @@ Download [VirtualBox](https://www.virtualbox.org/)
 
 Download [Vagrant](https://www.vagrantup.com/)
 
-That will install the necessary software for this workshop onto your Windows PC.
+Install both of these in that order. This will give you the necessary software for this workshop onto your Windows PC. Windows users will also need a `git` client. If you don't have one, you can get it from [git-scm.com](https://git-scm.com/)
 
 ## Bring up the Ubuntu Linux Virtual Machine
 
-Now you are ready to `clone` the project to your development folder and create your Vagrant vm
+Now you are ready to `clone` the project to your development folder and create your Vagrant vm. Open a terminal/shell window and change to a folder on your computer that you want to keep the source code for this workshop.
 
 ```sh
   git clone https://github.com/rofrano/devops-workshop.git
