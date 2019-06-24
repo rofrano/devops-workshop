@@ -1,3 +1,19 @@
+# Local environment metadata
+.DS_Store
+Thumbs.db
+
+# Vagrant folder
+.vagrant/
+
+# SonarQube reports
+.scannerwork/
+.sonarlint/
+
+# SQLite database files
+*.db
+db/*
+!db/.gitkeep
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
