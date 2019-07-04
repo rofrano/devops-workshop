@@ -26,7 +26,7 @@ import logging
 from flask import Flask
 
 # Get configuration from environment
-DATABASE_URI = os.getenv('DATABASE_URI', 'postgres://postgres:passw0rd@localhost:5432/postgres')
+DATABASE_URI = os.getenv('DATABASE_URI', 'postgres://postgres:postgres@localhost:5432/postgres')
 SECRET_KEY = os.getenv('SECRET_KEY', 'please, tell nobody... Shhhh')
 
 # Create Flask application

@@ -1,6 +1,17 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# WARNING: You will need the following plugin:
+# vagrant plugin install vagrant-docker-compose
+if Vagrant.plugins_enabled?
+  unless Vagrant.has_plugin?('vagrant-docker-compose')
+    puts 'Plugin missing.'
+    system('vagrant plugin install vagrant-docker-compose')
+    puts 'Dependencies installed, please try the command again.'
+    exit
+  end
+end
+
 ######################################################################
 # DevOps Minikube Environment
 ######################################################################
@@ -68,6 +79,10 @@ Vagrant.configure("2") do |config|
     apt-get install -y git tree python3-dev python3-pip python3-venv apt-transport-https
     apt-get upgrade python3
 
+    # Create a Python3 Virtual Environment and Activate it in .profile
+    sudo -H -u vagrant sh -c 'python3 -m venv ~/venv'
+    sudo -H -u vagrant sh -c 'echo ". ~/venv/bin/activate" >> ~/.profile'
+
     # Install minikube version of Kubernetes
     curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     chmod +x minikube
@@ -81,13 +96,29 @@ Vagrant.configure("2") do |config|
     # Check versions to prove that everything is installed
     python3 --version
     minikube version
-    kubectl version
+    # kubectl version
   SHELL
 
   ############################################################
   # Provision Docker with Vagrant before starting minikube
   ############################################################
-  config.vm.provision :docker
+  config.vm.provision :docker do |d|
+    d.pull_images "alpine"
+    d.pull_images "python:3.7-slim"
+    d.pull_images "postgres:alpine"
+    # docker run -d --name postgres -p 5432:5432 -v pg_data:/var/lib/postgresql/data postgres:alpine
+    # d.run "postgres:alpine",
+    #    args: "-d --name postgres -p 5432:5432 -v pg_data:/var/lib/postgresql/data"
+  end
+
+  ############################################################
+  # Add Docker compose
+  ############################################################
+  config.vm.provision :docker_compose
+  # config.vm.provision :docker_compose,
+  #   yml: "/vagrant/docker-compose.yml",
+  #   rebuild: true,
+  #   run: "always"
 
   ############################################################
   # Start minikube as vagrant user but with sudo privileges
