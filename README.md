@@ -111,7 +111,7 @@ The results on my Mac were:
   "vagrant destroy 1a2b3c4d"
 ```
 
-This shows that I have a vagrant VM defined under `/Users/rofrano/GitHub/devops-workshop` and that it is currently in the `poweroff` state.
+This shows that I have a vagrant VM defined under `/Users/rofrano/GitHub/devops-workshop` and that it is currently in the `poweroff` state. _Hint: If your laptop batter is excessively draining and you don't know why, it's always a good idea to check and see if you left any virtual machines running in the background!_
 
 ## Copyright
 (c) 2019 John Rofrano, All Rights Reserved
