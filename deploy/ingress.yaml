@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: pet-demo-ingress
+  annotations:
+    # nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  backend:
+    serviceName: default-http-backend
+    servicePort: 80
+  rules:
+  - host: localhost
+    http:
+      paths:
+      - path: /pets
+        backend:
+          serviceName: pet-demo-service
+          servicePort: 5000
