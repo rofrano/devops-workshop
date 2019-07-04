@@ -107,8 +107,8 @@ Vagrant.configure("2") do |config|
     d.pull_images "python:3.7-slim"
     d.pull_images "postgres:alpine"
     # docker run -d --name postgres -p 5432:5432 -v pg_data:/var/lib/postgresql/data postgres:alpine
-    # d.run "postgres:alpine",
-    #    args: "-d --name postgres -p 5432:5432 -v pg_data:/var/lib/postgresql/data"
+    d.run "postgres:alpine",
+       args: "-d --name postgres -p 5432:5432 -v pg_data:/var/lib/postgresql/data"
   end
 
   ############################################################
