@@ -17,7 +17,7 @@ end
 ######################################################################
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/bionic64"
-  config.vm.hostname = "devops"
+  config.vm.hostname = "workshop"
 
   # Create a forwarded port mapping which allows access to a specific port
   config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
