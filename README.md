@@ -1,4 +1,7 @@
 # DevOps Workshop
+
+[![Build Status](https://travis-ci.org/rofrano/devops-workshop.svg?branch=master)](https://travis-ci.org/rofrano/devops-workshop)
+
 DevOps Workshop Training that uses Vagrant, VirtualBox, Docker, and Minikube
 
 This repository is part of a 4 Hour DevOps Workshop that gives attendees first hand experience in building a microservice and deploying it as a container on Kubernetes using DevOps practices and methods. It demonstrates how to create a simple RESTful service using Python Flask and SQLAlchemy to access a persistent resource. Its purpose is to show the correct API and return codes that should be used for a REST API. This repo also demonstrates the use of Test Driven Development which us required for setting on a Continuous Integrate and Continuous Delivery Pipeline (CI/CD).
