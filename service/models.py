@@ -45,7 +45,7 @@ class Pet(db.Model):
     This version uses a relational database for persistence which is hidden
     from us by SQLAlchemy's object relational mappings (ORM)
     """
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger('flask.app')
     app = None
 
     # Table Schema
@@ -61,12 +61,14 @@ class Pet(db.Model):
         """
         Saves a Pet to the data store
         """
+        Pet.logger.info('Saving %s', self.name)
         if not self.id:
             db.session.add(self)
         db.session.commit()
 
     def delete(self):
         """ Removes a Pet from the data store """
+        Pet.logger.info('Deleting %s', self.name)
         db.session.delete(self)
         db.session.commit()
 

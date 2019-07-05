@@ -1,4 +1,4 @@
-FROM python:3.7-slim
+FROM python:3.6-slim
 
 # Expose any ports the app is expecting in the environment
 ENV PORT 5000
