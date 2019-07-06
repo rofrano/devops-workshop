@@ -66,4 +66,4 @@ We have added a second route `/hello` that returns the following JSON when calle
 
 Try it: http://localhost:5000/hello
 
-You can see how easy it is to startb building an API using Flask.
+You can see how easy it is to start to building an API using Flask.
