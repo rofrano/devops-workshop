@@ -76,7 +76,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     # Update and install
     apt-get update
-    apt-get install -y git tree python3-dev python3-pip python3-venv apt-transport-https
+    apt-get install -y git tree wget build-essential python3-dev python3-pip python3-venv apt-transport-https
     apt-get upgrade python3
 
     # Create a Python3 Virtual Environment and Activate it in .profile
