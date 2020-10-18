@@ -1,6 +1,4 @@
-# CASCOM2020 DevOps Workshop
-
-DevOps for Software Engineers Workshop @ CASCON 2020
+# DevOps for Software Engineers Workshop 2020
 
 This repository represents the starting point for a 3 hour workshop on **DevOps for Software Engineers**. It is menant to be forked to your own GitHub account so that you can create Issues and Pull Requests and push software updates as you follow along with the hands-on workshop.
 
