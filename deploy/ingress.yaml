@@ -1,18 +1,18 @@
-apiVersion: extensions/v1beta1
+
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: pet-demo-ingress
+  name: hitcounter-ingress
   annotations:
     # nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  backend:
-    serviceName: default-http-backend
-    servicePort: 80
   rules:
-  - host: localhost
-    http:
+  - http:
       paths:
-      - path: /pets
+      - path: /counters
+        pathType: Prefix
         backend:
-          serviceName: pet-demo-service
-          servicePort: 5000
+          service:
+            name: hitcounter
+            port:
+              number: 5000
