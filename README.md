@@ -2,6 +2,14 @@
 
 This repository represents the starting point for a 3 hour workshop on **DevOps for Software Engineers**. It is menant to be forked to your own GitHub account so that you can create Issues and Pull Requests and push software updates as you follow along with the hands-on workshop.
 
+## Overview
+
+Many job postings consider DevOps to consist largely of operation skills, but what about the software engineers that provide the Dev? This tutorial will give attendees first hand experience in building a microservice and deploying it as a container on Kubernetes using DevOps practices and methods. An overview of DevOps culture and cloud native microservice architecture will be presented as a backdrop to the hands-on exercise. 
+
+Attendees will build a RESTful Python Flask microservice using Test Driven Development techniques and run it locally. Then we will introduce the concepts of Docker and wrap that service in a Docker container and re-run our tests proving that the behavior has not changed. We will then set up a CI/CD pipeline and deploy the microservice to a local Kubernetes cluster. Finally we will add persistence to our microservice and deploy a Redis service in our Kubernetes cluster for our microservice to use showing how to use secrets for storing sensitive information like database credentials. 
+
+The tutorial will switch between lecture and lab several times as new concepts are introduced and then quickly demonstrated and implemented in the hands-on exercise. Attendees will come away with a good understanding of how modern software is delivered using DevOps tools and practices with a programmable containerized infrastructure like Kubernetes.
+
 ## Prerequisites
 
 To successfully follow along with this workshop you will need to have VirtualBox and Vagrant installed on your computer. The lab will be using an Ubuntu 18.04 virtual machine configured by Vagrant.
