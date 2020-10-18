@@ -1,117 +1,69 @@
-# DevOps Workshop
+# CASCOM2020 DevOps Workshop
 
-[![Build Status](https://travis-ci.org/rofrano/devops-workshop.svg?branch=master)](https://travis-ci.org/rofrano/devops-workshop)
+DevOps for Software Engineers Workshop @ CASCON 2020
 
-DevOps Workshop Training that uses Vagrant, VirtualBox, Docker, and Minikube
+This repository represents the starting point for a 3 hour workshop on **DevOps for Software Engineers**. It is menant to be forked to your own GitHub account so that you can create Issues and Pull Requests and push software updates as you follow along with the hands-on workshop.
 
-This repository is part of a 4 Hour DevOps Workshop that gives attendees first hand experience in building a microservice and deploying it as a container on Kubernetes using DevOps practices and methods. It demonstrates how to create a simple RESTful service using Python Flask and SQLAlchemy to access a persistent resource. Its purpose is to show the correct API and return codes that should be used for a REST API. This repo also demonstrates the use of Test Driven Development which us required for setting on a Continuous Integrate and Continuous Delivery Pipeline (CI/CD).
+## Prerequisites
 
-During the workshop, attendees will build a simple Python Flask microservice using Test Driven Development techniques and run it locally. Then we will introduce the concepts of Docker and wrap that service in a Docker container and re-run our tests proving that the behavior has not changed. Using Jenkins and minikube, we will set up a CI/CD pipeline and deploy the microservice to a local minikube Kubernetes cluster. Finally we will add persistence to our microservice and deploy a PostgreSQL service in our Kubernetes cluster for our microservice to use showing how to use secrets for storing sensitive information like database credentials.
+To successfully follow along with this workshop you will need to have VirtualBox and Vagrant installed on your computer. The lab will be using an Ubuntu 18.04 virtual machine configured by Vagrant.
 
-The workshop will switch between lecture and lab several times as new concepts are introduced and then quickly demonstrated and implemented in the hands-on exercise. Attendees will come away with a good understanding of how modern software is delivered using DevOps tools and practices with a programmable containerized infrastructure like Kubernetes.
+## Agenda
 
-## Prerequisite Installation
+The workshop Agenda is as follows:
 
-The first problem every software development team encounters is how to get developers productive quickly and keep them productive by giving them a consistent development environment that is easy to setup and maintain. Some developers might have Mac laptops while others prefer Windows, and still others prefer Linux; but these environments are very different and do not behave the same. To solve this problem, will we use **VirtualBox** and **Vagrant** to provide an _Infrastructure as Code_ environment on the developers desktop. If you don't have this software installed on your development computer, the first step is down download and install it.
+### Introduction and Setup
 
-### Mac installation
+Overview of how the workshop will be run. Get Vagrant and VirtualBox installed and setup and building during the DevOps Overview section if you haven't done that before the workshop.
 
-**Homebrew** is my preferred method of installing tools on the Mac. First because it is quick and easy, and second because maintaining the latest version is done for you with a simple `brew upgrade` command. If you are tired of downloading software and keeping it up to date, you want to use `brew` instead:
+Follow these instructions to [Install Prerequisite Software](docs/install-prereqs.md)
 
-Install **Homebrew** if you don't have it already:
+Instructions on [Working with Vagrant and VirtualBox](docs/working-with-vagrant.md)
 
-```sh
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
+### DevOps Overview
 
-Install **VirtualBox** and **Vagrant** using the `brew` command
+Brief  Overview of DevOps with an emphasis on the Software Developer perspective. Attendees will be introduced to the practices that are covered in this workshop and also learn why culture is the most critical aspect of DevOps to get right.
 
-```sh
-  brew cask install virtualbox
-  brew cask install vagrant
-```
+### Agile Planning
 
-That will install the necessary software for this workshop onto your Mac. If you don't want to use Homebrew, you can follow the Windows installation instructions and install VirtualBox and Vagrant manually.
+Introduction to Agile Planning concepts. Create an agile plan for the remainder of the workshop. Attendees will create Stories that they will execute during workshop. They will also use a Burndown chart to track their progress.
 
-### Windows installation
+Stories include:
 
-For Windows you must manually download and install the software. They can be obtained from the following links:
+1. Create a skeleton **Flask** service
+2. Add a counter where each `GET` increments the counter
+3. Make the counter persistent
+4. Add ability for multiple counters that are RESTful
+5. Setup Continuous Integration
+6. Add ability to delete a counter
+7. Add Docker support
+8. Add Kubernetes support
 
-Download [VirtualBox](https://www.virtualbox.org/)
+Full stories for planning are [here](docs/user-stories.md)
 
-Download [Vagrant](https://www.vagrantup.com/)
+### Social Coding
 
-Install both of these in that order. This will install the necessary software for this workshop onto your Windows PC. Windows users will also need a `git` client. If you don't have one, you can get it from [git-scm.com](https://git-scm.com/)
+Introduction to the **Git Feature Branch Workflow**. Attendees will assign the first [Story #1](docs/stories/01-skeleton-flask.md) from their Sprint Backlog to themselves, create a feature branch to work on the story, and issue a pull request to merge their code back into master.
 
-## Bring up the Ubuntu Linux Virtual Machine
+### Test Driven Development
 
-Now you are ready to `clone` the project to your development folder and create your Vagrant vm. Open a terminal/shell window and change to a folder on your computer that you want to keep the source code for this workshop.
+Introduction to Test Driven Development. Attendees will write the test cases for the code they wish they had, and then implement that code following Agile Planning and Feature Branch Workflow. They will implement [Story #2](docs/stories/02-add-counter.md) to add a non-persistent counter where each `GET` increments the counter.
 
-```sh
-  git clone https://github.com/rofrano/devops-workshop.git
-  cd devops-workshop
-  vagrant up
-```
+### Microservices and REST APIs
 
-This will bring up the VM and install a Python 3 development environment with `minikube` and the Kubernetes CLI (`kubectl`) for deploying to Kubernetes.
+Introduction to Microservice Architecture and REST APIs. Attendees will begin to code their first REST API for the hit counter application starting with test cases that follow good RESTful coding standards. Stories include [Story #3](docs/stories/03-add-persistence.md) and [Story #4](docs/stories/04-restful-counters.md) adding persistence to the counter in the form of a **Redis** database.
 
-## Using the VM
+### Continuous Integration and Continuous Delivery
 
-Vagrant sets up private ssh so that you don't need a key. This VM should be treated just like a remote server in the cloud. To get into it use:
+Attendees will be introduced to the concepts of CI/CD and in particular Travis CI. They will connect their git repo to Travis CI so that their test cases run with every Pull Request. Stories include added Redis to their Travis CI in [Story #5](docs/stories/05-setup-ci.md) and implementing the remainder of the REST interface in [Story #6](docs/stories/06-delete-counter.md).
 
-```sh
-  vagrant ssh
-```
+### Introduction to Docker
 
-You should now be inside the VM and ready to follow alone with the workshop.
+Overview of Docker containers. Attendees will create a Dockerfile for their microservices and run it in a Docker container. They will implement Story #6 and update Travis CI to run tests for the Dockerized version.
 
-## Exiting the VM and shutting it down
+### Introduction to Kubernetes
 
-Just like a remote server, you logout of the VM using the `exit` command. You can also shutdown the virtual machine using the `vagrant halt` command:
-
-```sh
-  exit
-  vagrant halt
-```
-
-This will shutdown the VM. When are are ready to use it again, just `cd` into the `devops-workshop` folder and use `vagrant up` to bring it back up.
-
-## Removing the Virtual Machine
-
-You can remove the vagrant VM to free up space on your computer or to recreate it again because something has gone horribly wrong. If we keep all of our work under the `/vagrant` folder, it will be safely stored on our computer and the VM can be destroyed and recreated at any time with:
-
-```sh
-  vagrant destroy
-```
-
-This will delete the virtual machine from your computer.
-
-## Global Status
-
-As you use Vagrant you will want to know if you left any virtual machines running. This can be easily seen using the `vagrant global-status` command:
-
-```sh
-  vagrant global-status
-```
-
-The results on my Mac were:
-
-```sh
-  $ vagrant global-status
-  id       name    provider   state    directory
-  ---------------------------------------------------------------------------
-  33160a7  default virtualbox poweroff /Users/rofrano/GitHub/devops-workshop
-
-  The above shows information about all known Vagrant environments
-  on this machine. This data is cached and may not be completely
-  up-to-date (use "vagrant global-status --prune" to prune invalid
-  entries). To interact with any of the machines, you can go to that
-  directory and run Vagrant, or you can use the ID directly with
-  Vagrant commands from any directory. For example:
-  "vagrant destroy 1a2b3c4d"
-```
-
-This shows that I have a vagrant VM defined under `/Users/rofrano/GitHub/devops-workshop` and that it is currently in the `poweroff` state. _Hint: If your laptop batter is excessively draining and you don't know why, it's always a good idea to check and see if you left any virtual machines running in the background!_
+Overview of Kubernetes. Attendees will deploy the Docker version of their microservice in a Kubernetes cluster. They will implement Story #7 and will also have to deploy a Redis service in Kubernetes for their microservice.
 
 ## Copyright
-(c) 2019 John Rofrano, All Rights Reserved
+(c) 2019, 2020 John Rofrano, All Rights Reserved
