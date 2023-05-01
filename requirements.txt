@@ -1,5 +1,5 @@
 # Runtime dependencies
-Flask==1.1.1
+Flask==2.3.2
 Flask-API==1.1
 Flask-SQLAlchemy==2.4.1
 python-dotenv==0.10.3
